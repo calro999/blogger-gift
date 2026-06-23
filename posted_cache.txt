@@ -3,3 +3,4 @@ decadence:10000040
 edinburghnaturalskinca:10000015
 kihachi:10000007
 serge-gens-ec:10000038
+nafuda-factory:10007035
