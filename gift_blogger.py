@@ -206,22 +206,25 @@ def generate_article_with_llm(item):
 
 def post_to_blogger(title, content):
     session_b64 = os.environ.get("BLOGGER_SESSION_B64")
-    if not session_b64:
-        raise ValueError("BLOGGER_SESSION_B64 is not set in environment variables.")
-    
-    try:
-        decoded_str = base64.b64decode(session_b64).decode('utf-8')
-        json.loads(decoded_str) # JSONとして正しいか検証
-    except Exception as e:
-        raise ValueError(f"BLOGGER_SESSION_B64 のデコードに失敗しました。正しいBase64文字列が設定されているか確認してください。エラー詳細: {e}")
-
     blog_id = os.environ.get("BLOGGER_BLOG_ID")
     if not blog_id:
         raise ValueError("BLOGGER_BLOG_ID is not set in environment variables.")
 
-    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", delete=False, suffix=".json") as temp_file:
-        temp_file.write(decoded_str)
-        session_file_path = temp_file.name
+    session_file_path = None
+    if session_b64:
+        try:
+            decoded_str = base64.b64decode(session_b64).decode('utf-8')
+            json.loads(decoded_str)
+            with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", delete=False, suffix=".json") as temp_file:
+                temp_file.write(decoded_str)
+                session_file_path = temp_file.name
+        except Exception as e:
+            raise ValueError(f"BLOGGER_SESSION_B64 のデコードに失敗しました: {e}")
+    elif os.path.exists("session.json"):
+        print("Found local session.json. Using it for Blogger.")
+        session_file_path = "session.json"
+    else:
+        raise ValueError("BLOGGER_SESSION_B64 is not set and local session.json not found.")
 
     print(f"Posting to Blogger (Blog ID: {blog_id}) using Playwright...")
 
@@ -384,7 +387,7 @@ def post_to_blogger(title, content):
                 raise e
 
     finally:
-        if os.path.exists(session_file_path):
+        if session_file_path and session_file_path != "session.json" and os.path.exists(session_file_path):
             os.remove(session_file_path)
 
 
@@ -462,21 +465,25 @@ def generate_room_comment_with_llm(item):
 
 
 def post_to_rakuten_room(item_code, comment):
-    session_b64 = os.environ.get("ROOM_SESSION_B64")
-    if not session_b64:
-        print("ROOM_SESSION_B64 is not set. Skipping Rakuten Room post.")
+    session_b64 = os.environ.get("ROOM_SESSION_B64") or os.environ.get("BLOGGER_SESSION_B64")
+    
+    session_file_path = None
+    if session_b64:
+        try:
+            decoded_str = base64.b64decode(session_b64).decode('utf-8')
+            json.loads(decoded_str)
+            with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", delete=False, suffix=".json") as temp_file:
+                temp_file.write(decoded_str)
+                session_file_path = temp_file.name
+        except Exception as e:
+            print(f"ROOM_SESSION_B64 (or BLOGGER_SESSION_B64) decode failed: {e}")
+            return
+    elif os.path.exists("session.json"):
+        print("Found local session.json. Using it for Rakuten Room.")
+        session_file_path = "session.json"
+    else:
+        print("ROOM_SESSION_B64/BLOGGER_SESSION_B64 is not set and local session.json not found. Skipping Rakuten Room post.")
         return
-
-    try:
-        decoded_str = base64.b64decode(session_b64).decode('utf-8')
-        json.loads(decoded_str)
-    except Exception as e:
-        print(f"ROOM_SESSION_B64 decode failed: {e}")
-        return
-
-    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", delete=False, suffix=".json") as temp_file:
-        temp_file.write(decoded_str)
-        session_file_path = temp_file.name
 
     print(f"Posting to Rakuten Room (Item: {item_code}) using Playwright...")
 
@@ -494,37 +501,46 @@ def post_to_rakuten_room(item_code, comment):
             page = context.new_page()
             page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
-            # ROOM投稿エディタへ遷移
-            warp_url = f"https://room.rakuten.co.jp/mix?itemcode={item_code}&scid=we_room_upc60"
-            page.goto(warp_url, wait_until="networkidle")
-            time.sleep(4)
+            try:
+                # ROOM投稿エディタへ遷移
+                warp_url = f"https://room.rakuten.co.jp/mix?itemcode={item_code}&scid=we_room_upc60"
+                page.goto(warp_url, wait_until="networkidle")
+                time.sleep(4)
 
-            # 重複・すでにコレしているかチェック
-            page_html = page.content()
-            if any(term in page_html for term in ["すでにコレ", "すでに登録されています", "すでに登録"]):
-                print("This item has already been posted ('コレ！'済み) to Rakuten Room. Skipping.")
-                return
+                # 重複・すでにコレしているかチェック
+                page_html = page.content()
+                if any(term in page_html for term in ["すでにコレ", "すでに登録されています", "すでに登録"]):
+                    print("This item has already been posted ('コレ！'済み) to Rakuten Room. Skipping.")
+                    return
 
-            # コメント入力欄 (textarea)
-            comment_area = page.locator('textarea[placeholder*="コメント"], textarea[placeholder*="オススメ"], textarea[placeholder*="魅力"], textarea').first
-            comment_area.wait_for(state="visible", timeout=15000)
-            comment_area.fill(comment)
-            time.sleep(1)
+                # コメント入力欄 (textarea)
+                comment_area = page.locator('textarea[placeholder*="コメント"], textarea[placeholder*="オススメ"], textarea[placeholder*="魅力"], textarea').first
+                comment_area.wait_for(state="visible", timeout=15000)
+                comment_area.fill(comment)
+                time.sleep(1)
 
-            # 投稿確定ボタン
-            submit_btn = page.locator('button:has-text("投稿"), button:has-text("完了"), button:has-text("コレ！"), button[class*="submit"]').first
-            submit_btn.scroll_into_view_if_needed()
-            time.sleep(1)
-            submit_btn.click(force=True)
-            print("Clicked Rakuten Room submit button.")
-            
-            time.sleep(5)
-            print("Successfully posted to Rakuten Room!")
+                # 投稿確定ボタン
+                submit_btn = page.locator('button:has-text("投稿"), button:has-text("完了"), button:has-text("コレ！"), button[class*="submit"]').first
+                submit_btn.scroll_into_view_if_needed()
+                time.sleep(1)
+                submit_btn.click(force=True)
+                print("Clicked Rakuten Room submit button.")
+                
+                time.sleep(5)
+                print("Successfully posted to Rakuten Room!")
+            except Exception as inner_e:
+                print(f"Error during Playwright interaction: {inner_e}")
+                try:
+                    page.screenshot(path="room_error.png")
+                    print("Saved debug screenshot: room_error.png")
+                except Exception as se:
+                    print(f"Failed to take screenshot: {se}")
+                raise inner_e
 
     except Exception as e:
         print(f"Error posting to Rakuten Room: {e}")
     finally:
-        if os.path.exists(session_file_path):
+        if session_file_path and session_file_path != "session.json" and os.path.exists(session_file_path):
             os.remove(session_file_path)
 
 

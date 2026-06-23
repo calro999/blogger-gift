@@ -4,7 +4,7 @@ import base64
 from playwright.sync_api import sync_playwright
 
 def main():
-    print("Bloggerにログインしてセッションを保存します...")
+    print("Blogger と 楽天ROOM にログインしてセッションを保存します...")
     with sync_playwright() as p:
         # 自動化検知を回避するための引数を指定して起動
         browser = p.chromium.launch(
@@ -19,13 +19,25 @@ def main():
         # webdriver検出フラグを無効化
         page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         
+        # 1. Bloggerへのログイン
         page.goto("https://www.blogger.com/")
         print("=========================================================")
-        print("ブラウザ上でGoogleアカウントにログインしてください。")
+        print("【ステップ 1/2】")
+        print("ブラウザ上でGoogleアカウント（Blogger）にログインしてください。")
         print("ログイン完了後、Bloggerのダッシュボードが表示されたら、")
         print("このターミナルで Enter キーを押してください。")
         print("=========================================================")
-        input("Press Enter to continue after login...")
+        input("Press Enter after Blogger login...")
+
+        # 2. 楽天へのログイン
+        page.goto("https://room.rakuten.co.jp/")
+        print("=========================================================")
+        print("【ステップ 2/2】")
+        print("ブラウザ上で楽天ROOM（楽天アカウント）にログインしてください。")
+        print("ログイン完了後、マイページやフィードが表示されたら、")
+        print("このターミナルで Enter キーを押してください。")
+        print("=========================================================")
+        input("Press Enter after Rakuten Room login...")
         
         state = context.storage_state()
         
@@ -42,6 +54,7 @@ def main():
         print(b64_str)
         print("=====================================================================\n")
         print("上記の長い文字列をすべてコピーして、GitHub Secretsの BLOGGER_SESSION_B64 に設定してください。")
+        print("※この値にはBloggerと楽天ROOMの両方のログイン状態が含まれるため、コレ！も同時に動作します。")
 
         browser.close()
 
