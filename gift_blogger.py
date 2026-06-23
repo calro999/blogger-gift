@@ -387,6 +387,147 @@ def post_to_blogger(title, content):
         if os.path.exists(session_file_path):
             os.remove(session_file_path)
 
+
+def generate_room_comment_with_llm(item):
+    title = item.get("itemName")
+    price = item.get("itemPrice")
+    
+    prompt = f"""以下の楽天の商品情報を基にして、楽天ROOM用の紹介コメント（400文字以内）を生成してください。
+【商品名】: {title}
+【価格】: {price}円
+
+以下の要件を厳格に遵守してください：
+1. 文字数は400文字以内（厳守。超えると投稿エラーになります）。
+2. 親しみやすい話し言葉で、絵文字を5〜8個使用してください。
+3. ハッシュタグを3〜5個（商品のカテゴリやギフト・スイーツに関連するもの）含め、末尾に「#楽天市場」を必ず含めること。
+4. URLや疑似リンク、プレースホルダー（「[リンクはこちら]」など）は絶対に含めないでください。
+5. 出力は紹介コメントのテキストのみとし、前置きやMarkdownの装飾コードブロック等は一切含めないでください。
+"""
+
+    system_message = "あなたはギフト専門セレクトガイド『ギフル』の専属インフルエンサーです。TPOに合わせたセンス抜群のギフトや、自分を甘やかす至高のご褒美おしゃれスイーツを楽天ROOMのフォロワーに向けて紹介します。思わず『コレ！』したくなるような魅力を伝える紹介文を日本語のみで執筆してください。"
+
+    # 1. GitHub Models API
+    github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if github_token:
+        try:
+            print("Attempting to generate ROOM comment with GitHub Models API...")
+            headers = {
+                "Authorization": f"Bearer {github_token}",
+                "Content-Type": "application/json"
+            }
+            payload = {
+                "model": "gpt-4o-mini",
+                "messages": [
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.7
+            }
+            response = requests.post("https://models.inference.ai.azure.com/chat/completions", headers=headers, json=payload, timeout=30)
+            if response.status_code == 200:
+                result_text = response.json()["choices"][0]["message"]["content"].strip()
+                if "```" in result_text:
+                    result_text = result_text.replace("```", "")
+                return result_text.strip()
+        except Exception as e:
+            print(f"GitHub Models API ROOM generation failed: {e}")
+
+    # 2. Pollinations AI
+    pollinations_models = ["openai-fast", "openai"]
+    for model in pollinations_models:
+        try:
+            print(f"Attempting to generate ROOM comment with Pollinations AI (model: {model})...")
+            response = requests.post(
+                "https://text.pollinations.ai/",
+                json={
+                    "messages": [
+                        {"role": "system", "content": system_message},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "model": model
+                },
+                timeout=45
+            )
+            if response.status_code == 200 and len(response.text.strip()) > 30:
+                result_text = response.text.strip()
+                if "```" in result_text:
+                    result_text = result_text.replace("```", "")
+                return result_text.strip()
+        except Exception as e:
+            print(f"Pollinations AI ROOM ({model}) failed: {e}")
+
+    # Fallback
+    clean_title = title.replace("【", "").replace("】", "")[:50]
+    return f"【ギフル厳選トレンドギフト】\n\n本当にセンス抜群でおすすめしたい素敵アイテムをご紹介します✨\nご褒美スイーツやお祝いギフトにぴったり🎀\n\n{clean_title}...\n\n#楽天市場 #おすすめギフト #ギフト #ご褒美スイーツ"
+
+
+def post_to_rakuten_room(item_code, comment):
+    session_b64 = os.environ.get("ROOM_SESSION_B64")
+    if not session_b64:
+        print("ROOM_SESSION_B64 is not set. Skipping Rakuten Room post.")
+        return
+
+    try:
+        decoded_str = base64.b64decode(session_b64).decode('utf-8')
+        json.loads(decoded_str)
+    except Exception as e:
+        print(f"ROOM_SESSION_B64 decode failed: {e}")
+        return
+
+    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", delete=False, suffix=".json") as temp_file:
+        temp_file.write(decoded_str)
+        session_file_path = temp_file.name
+
+    print(f"Posting to Rakuten Room (Item: {item_code}) using Playwright...")
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--disable-blink-features=AutomationControlled"]
+            )
+            context = browser.new_context(
+                storage_state=session_file_path,
+                viewport={"width": 1280, "height": 800},
+                user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+            page = context.new_page()
+            page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+            # ROOM投稿エディタへ遷移
+            warp_url = f"https://room.rakuten.co.jp/mix?itemcode={item_code}&scid=we_room_upc60"
+            page.goto(warp_url, wait_until="networkidle")
+            time.sleep(4)
+
+            # 重複・すでにコレしているかチェック
+            page_html = page.content()
+            if any(term in page_html for term in ["すでにコレ", "すでに登録されています", "すでに登録"]):
+                print("This item has already been posted ('コレ！'済み) to Rakuten Room. Skipping.")
+                return
+
+            # コメント入力欄 (textarea)
+            comment_area = page.locator('textarea[placeholder*="コメント"], textarea[placeholder*="オススメ"], textarea[placeholder*="魅力"], textarea').first
+            comment_area.wait_for(state="visible", timeout=15000)
+            comment_area.fill(comment)
+            time.sleep(1)
+
+            # 投稿確定ボタン
+            submit_btn = page.locator('button:has-text("投稿"), button:has-text("完了"), button:has-text("コレ！"), button[class*="submit"]').first
+            submit_btn.scroll_into_view_if_needed()
+            time.sleep(1)
+            submit_btn.click(force=True)
+            print("Clicked Rakuten Room submit button.")
+            
+            time.sleep(5)
+            print("Successfully posted to Rakuten Room!")
+
+    except Exception as e:
+        print(f"Error posting to Rakuten Room: {e}")
+    finally:
+        if os.path.exists(session_file_path):
+            os.remove(session_file_path)
+
+
 def main():
     try:
         # 1. 楽天から商品取得
@@ -414,6 +555,15 @@ def main():
         print("--------------------------------------")
         
         post_to_blogger(gen_title, html_content)
+        
+        # 3. 楽天ROOMへもコレ！投稿
+        try:
+            room_comment = generate_room_comment_with_llm(item)
+            print("Generated ROOM Comment:")
+            print(room_comment)
+            post_to_rakuten_room(item_code, room_comment)
+        except Exception as room_err:
+            print(f"Failed to post to Rakuten Room: {room_err}")
 
         # 4. キャッシュに保存
         save_to_cache(item_code)

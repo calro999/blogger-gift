@@ -1,6 +1,6 @@
 import os
 import sys
-from gift_blogger import generate_article_with_llm
+from gift_blogger import generate_article_with_llm, generate_room_comment_with_llm
 
 def test_main():
     print("Starting verification test for blogger-gift (LLM generation only)...")
@@ -20,13 +20,21 @@ def test_main():
     }
         
     try:
-        # LLMで記事生成
-        print("Generating article with LLM...")
+        # LLMでBlogger記事生成
+        print("Generating Blogger article with LLM...")
         content = generate_article_with_llm(dummy_item)
         
         print("\n=== GENERATED ARTICLE ===")
         print(content)
         print("==========================\n")
+
+        # LLMで楽天ROOM用コメント生成
+        print("Generating Rakuten Room comment with LLM...")
+        room_comment = generate_room_comment_with_llm(dummy_item)
+        print("\n=== GENERATED ROOM COMMENT ===")
+        print(room_comment)
+        print("==============================\n")
+        
         print("Verification completed successfully!")
 
     except Exception as e:
