@@ -13,3 +13,4 @@ oimoya:10003026
 kasyou-morin:10000394
 maochan:10000047
 mayunashop:10000400
+kasyou-morin:10000341
