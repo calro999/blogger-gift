@@ -10,3 +10,4 @@ serge-gens-ec:10000037
 oimoya:10003445
 decadence:10000547
 oimoya:10003026
+kasyou-morin:10000394
