@@ -26,3 +26,4 @@ ippnaturefuzz:10000025
 cocosab:10013852
 cherie-ac:10000079
 sosuke:10000000
+omoinokatatigift:10000001
