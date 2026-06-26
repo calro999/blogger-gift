@@ -30,3 +30,4 @@ omoinokatatigift:10000001
 soreado:10003358
 srr-cake:10000334
 gallershop:10000205
+terrine-de-chocolat:10000000
