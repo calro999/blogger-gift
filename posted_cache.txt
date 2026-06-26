@@ -35,3 +35,4 @@ azu-kobe:10014580
 antina:10005932
 gallershop:10000057
 azu-kobe:10014486
+patie:10037416
