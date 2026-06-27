@@ -40,3 +40,4 @@ kitanokashi-kafuu:10000037
 rl-waffle:10000013
 toritaniya:10003562
 imabaritowel-center:10000005
+jour-flour:10000619
