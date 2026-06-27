@@ -37,3 +37,4 @@ gallershop:10000057
 azu-kobe:10014486
 patie:10037416
 kitanokashi-kafuu:10000037
+rl-waffle:10000013
