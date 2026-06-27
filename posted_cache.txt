@@ -42,3 +42,4 @@ toritaniya:10003562
 imabaritowel-center:10000005
 jour-flour:10000619
 tnr:10001896
+rl-waffle:10001281
