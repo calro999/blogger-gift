@@ -46,3 +46,4 @@ rl-waffle:10001281
 azu-kobe:10014556
 hontakasagoya:10000944
 bombomy-osaka:10000011
+gallershop:10000010
