@@ -48,3 +48,4 @@ hontakasagoya:10000944
 bombomy-osaka:10000011
 gallershop:10000010
 shoplistselect:10150841
+azu-kobe:10015366
