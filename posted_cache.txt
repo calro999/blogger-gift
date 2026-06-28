@@ -51,3 +51,4 @@ shoplistselect:10150841
 azu-kobe:10015366
 oimoya:10003025
 coffee-dripbag:10000189
+rokumei-coffee:10000013
