@@ -52,3 +52,4 @@ azu-kobe:10015366
 oimoya:10003025
 coffee-dripbag:10000189
 rokumei-coffee:10000013
+decadence:10000548
