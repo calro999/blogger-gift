@@ -67,3 +67,4 @@ ganso-jibeer:10000013
 azu-kobe:10015405
 cocosab:10000389
 azu-kobe:10014576
+azu-kobe:10006693
