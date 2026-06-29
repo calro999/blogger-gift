@@ -62,3 +62,4 @@ r-mart-plus:10027046
 greek-yogurt:10000062
 capsule:10071835
 r-food:10001762
+kitanokashi-kafuu:10000001
