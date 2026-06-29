@@ -65,3 +65,4 @@ r-food:10001762
 kitanokashi-kafuu:10000001
 ganso-jibeer:10000013
 azu-kobe:10015405
+cocosab:10000389
