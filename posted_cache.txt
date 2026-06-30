@@ -74,3 +74,4 @@ okkru:10001563
 kasyou-morin:10000313
 kanoka-cake:10000047
 r-food:10000821
+dalloyau:10000080
