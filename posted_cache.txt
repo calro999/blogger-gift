@@ -71,3 +71,4 @@ azu-kobe:10006693
 zaiho:10000270
 azu-kobe:10015362
 okkru:10001563
+kasyou-morin:10000313
