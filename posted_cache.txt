@@ -77,3 +77,4 @@ r-food:10000821
 dalloyau:10000080
 dolcefelice:10000176
 srr-cake:10000723
+inohiro:10000031
