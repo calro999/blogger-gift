@@ -82,3 +82,4 @@ lindt-chocolate:10000932
 bonheur7:10000017
 rl-waffle:10000107
 kihachi:10000023
+terrine-de-chocolat:10000031
