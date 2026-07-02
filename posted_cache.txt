@@ -92,3 +92,4 @@ sweets-focetta:10003988
 decadence:10000549
 cocosab:10013917
 hontakasagoya:10000875
+baisenmoto-waraku:10000242
