@@ -98,3 +98,4 @@ nattokushop:10007799
 nishima:10001009
 yabucoffee:10000336
 kos-plus:10000020
+nagaratatin:10000016
