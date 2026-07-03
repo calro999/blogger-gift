@@ -96,3 +96,4 @@ baisenmoto-waraku:10000242
 f221309-hamamatsu:10000066
 nattokushop:10007799
 nishima:10001009
+yabucoffee:10000336
