@@ -113,3 +113,4 @@ shoplistselect:10150840
 concirge:10004600
 oimoya:10001884
 shaddy:10321407
+terrine-de-chocolat:10000018
