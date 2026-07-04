@@ -120,3 +120,4 @@ odekake:10001799
 patie:10068620
 gift-bellsimple:10000376
 nafuda-factory:10007309
+nattokushop:10003935
