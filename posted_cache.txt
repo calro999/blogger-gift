@@ -111,3 +111,4 @@ nagasaki-kasutera:10002491
 f272094-moriguchi:10000469
 shoplistselect:10150840
 concirge:10004600
+oimoya:10001884
