@@ -124,3 +124,4 @@ nattokushop:10003935
 azu-kobe:10014579
 okkru:10002759
 oimoya:10003152
+lindt-chocolate:10001570
