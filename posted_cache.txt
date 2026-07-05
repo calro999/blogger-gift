@@ -122,3 +122,4 @@ gift-bellsimple:10000376
 nafuda-factory:10007309
 nattokushop:10003935
 azu-kobe:10014579
+okkru:10002759
