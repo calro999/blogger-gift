@@ -123,3 +123,4 @@ nafuda-factory:10007309
 nattokushop:10003935
 azu-kobe:10014579
 okkru:10002759
+oimoya:10003152
