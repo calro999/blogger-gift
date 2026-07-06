@@ -137,3 +137,4 @@ sucreyshop:10000032
 kasyou-morin:10000383
 r-food:10002132
 hontakasagoya:10000879
+kasumi-shop:10002913
