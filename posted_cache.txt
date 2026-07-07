@@ -152,3 +152,4 @@ buffy:10009418
 hajimaru:10002503
 hanayoshi:10000726
 cocosab:10013918
+akanemaru:10000471
