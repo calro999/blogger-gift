@@ -143,3 +143,4 @@ ippnaturefuzz:10000011
 r-food:10002274
 pureli:10000002
 megumi-cyaya:10000017
+azu-kobe:10014456
