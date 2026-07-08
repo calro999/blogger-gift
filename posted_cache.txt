@@ -158,3 +158,4 @@ kiitos-web:10030656
 azu-kobe:10014433
 sucreyshop:10000038
 terrine-de-chocolat:10000003
+rucopis:10000913
