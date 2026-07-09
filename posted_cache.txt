@@ -170,3 +170,4 @@ wa-sweets-yoshida:10000667
 puddinglaboratory:10000005
 okkru:10002638
 sucreyshop:10000029
+oyaizu:10000005
