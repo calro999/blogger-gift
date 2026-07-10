@@ -179,3 +179,4 @@ tamagomura:10000215
 r-mart-plus:10029961
 shop-c3:10000351
 ganso-jibeer:10000395
+shop-c3:10000710
