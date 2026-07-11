@@ -184,3 +184,4 @@ auc-giftshoptwins:10000754
 japangift:10178133
 tea-life:10006997
 nattokushop:10003232
+itohkyuemon:10000162
