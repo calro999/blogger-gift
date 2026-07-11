@@ -188,3 +188,4 @@ itohkyuemon:10000162
 kasyou-morin:10000442
 lapoppofarm:10000067
 lepiqueassiette:10000000
+f202011-nagano:10001287
