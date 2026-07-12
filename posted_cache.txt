@@ -197,3 +197,4 @@ shuei-hana:10000857
 itohkyuemon:10000032
 946kitchen:10006203
 azu-kobe:10014479
+azu-kobe:10014631
