@@ -208,3 +208,4 @@ flowerkitchen:10001195
 f222054-atami:10000190
 hl-labo:10008441
 beniharuka:10000018
+ronnefeldt-salon:10000192
