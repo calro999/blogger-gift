@@ -198,3 +198,4 @@ itohkyuemon:10000032
 946kitchen:10006203
 azu-kobe:10014479
 azu-kobe:10014631
+takano-eshop:10008159
