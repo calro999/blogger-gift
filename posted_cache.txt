@@ -213,3 +213,4 @@ tiramisuno6:10000006
 gc-press:10002807
 okodepa:10001417
 azu-kobe:10014502
+lebonheur-ashiya:10000012
