@@ -221,3 +221,4 @@ auc-giftshoptwins:10000663
 chapon:10000001
 milletirana:10000094
 rambbit:10193151
+karendostore:10000035
