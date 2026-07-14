@@ -217,3 +217,4 @@ lebonheur-ashiya:10000012
 blueberrybank-e-shop:10012261
 tamagomura:10000232
 lebonheur-ashiya:10000013
+auc-giftshoptwins:10000663
