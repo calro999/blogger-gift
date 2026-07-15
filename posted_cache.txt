@@ -230,3 +230,4 @@ nafuda-factory:10007287
 asahimi:10001181
 rikuc-gift:10003083
 henana:10002760
+shoplistselect:10167444
