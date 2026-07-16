@@ -233,3 +233,4 @@ henana:10002760
 shoplistselect:10167444
 tiramisuno6:10000008
 lebonheur-ashiya:10000081
+nattokushop:10003214
