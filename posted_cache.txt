@@ -240,3 +240,4 @@ takano-eshop:10007324
 boshiya-kaharu:10000056
 shoplistselect:10151640
 azu-kobe:10015365
+enaldy:10024774
