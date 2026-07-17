@@ -237,3 +237,4 @@ nattokushop:10003214
 hajimaru:10002505
 rikuc-gift:10003072
 takano-eshop:10007324
+boshiya-kaharu:10000056
