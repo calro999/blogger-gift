@@ -245,3 +245,4 @@ capsule:10070905
 miwaki:10006511
 hontakasagoya:10000931
 puddinglaboratory:10000024
+shoplistselect:10152309
