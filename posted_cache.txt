@@ -247,3 +247,4 @@ hontakasagoya:10000931
 puddinglaboratory:10000024
 shoplistselect:10152309
 accessoriessalt:10002314
+gyokkado:10000225
