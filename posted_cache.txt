@@ -243,3 +243,4 @@ azu-kobe:10015365
 enaldy:10024774
 capsule:10070905
 miwaki:10006511
+hontakasagoya:10000931
