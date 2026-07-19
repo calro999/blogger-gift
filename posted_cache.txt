@@ -250,3 +250,4 @@ accessoriessalt:10002314
 gyokkado:10000225
 japangift:10407985
 capsule:10070917
+shop-c3:10000641
