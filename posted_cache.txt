@@ -249,3 +249,4 @@ shoplistselect:10152309
 accessoriessalt:10002314
 gyokkado:10000225
 japangift:10407985
+capsule:10070917
