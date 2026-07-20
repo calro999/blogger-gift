@@ -252,3 +252,4 @@ japangift:10407985
 capsule:10070917
 shop-c3:10000641
 shoplistselect:10152277
+penheur-kobe:10000011
