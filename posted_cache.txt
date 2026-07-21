@@ -259,3 +259,4 @@ azu-kobe:10014473
 terrine-de-chocolat:10000020
 beniharuka:10000033
 tryad-way:10000507
+kato-shoten-japan:10000757
