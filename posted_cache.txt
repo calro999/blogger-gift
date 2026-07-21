@@ -255,3 +255,4 @@ shoplistselect:10152277
 penheur-kobe:10000011
 salondelien20180830:10000071
 encounter5:15865604
+azu-kobe:10014473
