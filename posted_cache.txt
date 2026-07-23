@@ -263,3 +263,4 @@ kato-shoten-japan:10000757
 nipponselect:10215063
 mottostore:10000038
 takano-eshop:10007261
+shuei-hana:10000256
