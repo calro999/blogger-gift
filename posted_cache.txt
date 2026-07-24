@@ -267,3 +267,4 @@ shuei-hana:10000256
 wine-cheese-fiano:10000065
 japangift:10394013
 kimuraen:10003886
+takano-eshop:10008161
