@@ -279,3 +279,4 @@ aimere:10018549
 mayunashop:10000048
 mfcoffee:10000528
 kyoto-kineel:10000013
+shoplistselect:10150843
