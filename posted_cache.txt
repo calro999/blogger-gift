@@ -278,3 +278,4 @@ watch-me:10015611
 aimere:10018549
 mayunashop:10000048
 mfcoffee:10000528
+kyoto-kineel:10000013
