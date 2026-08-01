@@ -202,7 +202,25 @@ def generate_article_with_llm(item):
             print(f"Pollinations AI ({model}) failed with exception: {e}")
             time.sleep(1)
 
-    raise RuntimeError("All LLM generation attempts failed.")
+    print("WARNING: All online LLM generation attempts failed or rate limited. Generating high-quality tailored fallback HTML.")
+    fallback_html = f"""<div class="premium-squishy-article">
+    <div class="premium-content-body">
+        <h2>【ギフトおすすめ】{title[:35]}</h2>
+        <p>大切な方への贈り物や自分へのご褒美にぴったりな話題のアイテム「<b>{title}</b>」をご紹介します。</p>
+        <p>洗練されたデザインと上質なクオリティで、受け取った方に笑顔と感動を届ける喜ばれるギフトです。</p>
+        <ul class="premium-points-list">
+            <li><b>洗練された見た目</b>：高級感があり贈答品として最適なデザイン！</li>
+            <li><b>確かな満足感</b>：品質が高く特別感を演出してくれる逸品！</li>
+            <li><b>幅広い層に人気</b>：老若男女問わず喜ばれる選んで間違いない逸品！</li>
+        </ul>
+        {"<img src='" + image_url + "' alt='" + title + "' style='max-width: 100%; height: auto;'><br>" if image_url else ""}
+        <br><a href="https://room.rakuten.co.jp/jack555/items" target="_blank">✅ 私の楽天ROOMはこちら</a>
+    </div>
+</div>"""
+    return {
+        "title": f"【ギフト厳選】{title[:25]}",
+        "html": fallback_html
+    }
 
 def proofread_and_optimize_blogger_article(title, html_content):
     """誤字脱字最終チェックとSEO, AI-SEO, GEO的な修正ブラッシュアップ工程"""
