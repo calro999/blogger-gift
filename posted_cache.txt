@@ -284,3 +284,4 @@ shoplistselect:10151882
 jour-flour:10000012
 aquila-sweets:10000111
 hanatora:10000492
+nipponselect:10215065
