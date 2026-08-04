@@ -167,40 +167,7 @@ def generate_article_with_llm(item):
     else:
         print("GITHUB_TOKEN / GH_TOKEN is not set in environment variables.")
 
-    # 2. Pollinations AI (キー不要、フォールバック)
-    pollinations_models = ["openai-fast", "openai"]
-    for model in pollinations_models:
-        try:
-            print(f"Attempting to generate article with Pollinations AI (model: {model})...")
-            response = requests.post(
-                "https://text.pollinations.ai/",
-                json={
-                    "messages": [
-                        {"role": "system", "content": "あなたはギフト専門セレクトガイド『ギフル』の編集長兼専属ライターです。様々なTPO（誕生日、記念日、お祝い、プチギフトなど）に合わせたセンス抜群のトレンドギフトや、自分を甘やかす至高のご褒美おしゃれスイーツを厳選して紹介します。読者の『何を贈ればいいか分からない』という悩みを解決する、上品で洗練された、かつ魅力的な紹介記事を日本語のみで執筆してください。毎回完全にユニークで、テンプレートの使い回し感のない文章を作成してください。指示された仕様に完全に従い、前置きやHTMLタグブロックのマークダウン表現などを含めない純粋なHTML本文のみを出力します。"},
-                        {"role": "user", "content": prompt}
-                    ],
-                    "model": model
-                },
-                timeout=45
-            )
-            if response.status_code == 200 and len(response.text.strip()) > 100:
-                result_text = response.text.strip()
-                import json
-                try:
-                    if "```json" in result_text: result_text = result_text.split("```json", 1)[1]
-                    if "```" in result_text: result_text = result_text.split("```")[0]
-                    result_text = result_text.strip()
-                    parsed = json.loads(result_text)
-                    return parsed
-                except:
-                    if "```html" in result_text: result_text = result_text.split("```html", 1)[1]
-                    if "```" in result_text: result_text = result_text.split("```", 1)[0]
-                    return {"title": "【注目】" + title[:20] + "...", "html": result_text.strip()}
-            else:
-                print(f"Pollinations AI ({model}) returned status code: {response.status_code} - {response.text[:200]}")
-        except Exception as e:
-            print(f"Pollinations AI ({model}) failed with exception: {e}")
-            time.sleep(1)
+
 
     print("WARNING: All online LLM generation attempts failed or rate limited. Generating high-quality tailored fallback HTML.")
     fallback_html = f"""<div class="premium-squishy-article">
