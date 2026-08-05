@@ -295,3 +295,4 @@ nafuda-factory:10006753
 blueberrybank-e-shop:10010003
 winekan:10009730
 azu-kobe:10015364
+ko-fuku:10000003
