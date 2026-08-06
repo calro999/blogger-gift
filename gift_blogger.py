@@ -111,82 +111,196 @@ def fetch_rakuten_item():
 def generate_article_with_llm(item):
     title = item.get("itemName", "")
     price = item.get("itemPrice", "")
+    caption = item.get("itemCaption", "")
     affiliate_id = os.environ.get("RAKUTEN_AFFILIATE_ID")
     url = get_rakuten_affiliate_url(item, affiliate_id)
-    
+
     image_url = ""
     medium_images = item.get("mediumImageUrls", [])
     if medium_images:
-        image_url = medium_images[0]
+        image_url = medium_images[0].get("imageUrl", "") if isinstance(medium_images[0], dict) else medium_images[0]
     else:
         small_images = item.get("smallImageUrls", [])
         if small_images:
-            image_url = small_images[0]
+            image_url = small_images[0].get("imageUrl", "") if isinstance(small_images[0], dict) else small_images[0]
 
-    buy_button_html = f'<div style="text-align: center; margin: 20px 0;"><a href="{url}" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding: 14px 28px; background-color: #bf0000; color: #ffffff; font-weight: bold; font-size: 16px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">🛒 楽天市場で価格・在庫を見る</a></div>'
+    buy_button_html = (
+        f'<div style="text-align: center; margin: 20px 0;">'
+        f'<a href="{url}" target="_blank" rel="noopener noreferrer" '
+        f'style="display:inline-block; padding: 14px 28px; background-color: #bf0000; '
+        f'color: #ffffff; font-weight: bold; font-size: 16px; border-radius: 8px; '
+        f'text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">'
+        f'🛒 楽天市場で価格・在庫を見る</a></div>'
+    )
 
     prompt = f"""以下の楽天の商品情報を基にして、ブログ記事のタイトルとHTML本文を生成してください。
 【商品名】: {title}
 【価格】: {price}円
+【商品説明】: {caption[:300]}
 【商品画像URL】: {image_url}
 【アフィリエイトURL】: {url}
-【楽天ROOM】: https://room.rakuten.co.jp/jack555/items
 
 以下の要件を厳格に遵守してください：
 1. 出力は以下のJSONフォーマットのみとしてください。他のテキストは一切含めないでください。
 {{
     "title": "ここにキャッチーで魅力的なタイトル（商品名の単なる羅列は禁止、最大35文字）",
-    "html": "ここに純粋なHTML本文（以下の構成に従う）"
+    "html": "ここに純粋なHTML本文"
 }}
 2. HTML本文の構成：
-   - 記事全体を `<div class="premium-squishy-article">` と `</div>` で囲む
-   - 商品の魅力的な説明（`<div class="premium-content-body">` と `</div>` で囲む）
-   - おすすめ注目ポイント3選（`<ul class="premium-points-list">` と `<li>` タグを使用）
+   - 記事全体を `<div class="article-wrapper">` と `</div>` で囲む
+   - 商品の魅力的な説明（`<div class="content-body">` と `</div>` で囲む）
+   - おすすめ注目ポイント3選（`<ul class="points-list">` と `<li>` タグを使用）
    - 商品の画像（`<img src="{image_url}" alt="{title}" style="max-width: 100%; height: auto;">`）
-   - 楽天市場への購入アフィリエイトボタン（必ず以下のHTMLを配置すること）:
-     {buy_button_html}
-   - 楽天ROOMへのリンク（`<br><a href="https://room.rakuten.co.jp/jack555/items" target="_blank">✅ 私の楽天ROOMはこちら</a>`）
-3. 【厳禁事項】: Amazon, Yahoo, 他社ECサイト, メーカー公式サイト等のURLや名称は絶対に含めないでください。商品リンクは提供したアフィリエイトURLのみを使用してください。
+   - 購入ボタンHTML: {buy_button_html}
+3. 【厳禁事項】: Amazon, Yahoo, 他社ECサイトなどのリンクや名称は絶対に含めないでください。
 """
 
-    system_message = "あなたはギフト・プレゼント専門の紹介ブロガーです。指示された仕様に完全に従い、Amazon等の無関係な外部サイトリンクを一切含めない純粋なHTML本文を出力します。"
+    system_message = "あなたはプロのトレンド紹介ブロガーです。指示された仕様に完全に従い、JSONフォーマットのみで出力します。"
 
-    # 1. GitHub Models API
-    github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if github_token:
-        for model_name in ["gpt-4o-mini", "gpt-4o", "Phi-3.5-mini-instruct"]:
+    def parse_json_response(text):
+        import json as _json
+        text = text.strip()
+        if "```json" in text:
+            text = text.split("```json", 1)[1].split("```")[0]
+        elif "```" in text:
+            text = text.split("```", 1)[1].split("```")[0]
+        text = text.strip()
+        try:
+            data = _json.loads(text)
+            if isinstance(data, dict) and "html" in data:
+                return data
+        except Exception:
+            pass
+        return None
+
+    # 1. Gemini API（最優先）
+    gemini_key = os.environ.get("GEMINI_API_KEY")
+    if gemini_key:
+        for model_name in ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"]:
             try:
-                headers = {"Authorization": f"Bearer {github_token}", "Content-Type": "application/json"}
+                api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={gemini_key}"
+                payload = {
+                    "contents": [{"parts": [{"text": f"{system_message}\n\n{prompt}"}]}],
+                    "generationConfig": {"temperature": 0.8, "maxOutputTokens": 2048}
+                }
+                if "2.5" in model_name:
+                    payload["generationConfig"]["thinkingConfig"] = {"thinkingBudget": 0}
+                res = requests.post(api_url, json=payload, timeout=40)
+                if res.status_code == 200:
+                    data = res.json()
+                    candidate = data.get("candidates", [{}])[0]
+                    parts = candidate.get("content", {}).get("parts", [])
+                    text = "".join(p.get("text", "") for p in parts if p.get("text")).strip()
+                    parsed = parse_json_response(text)
+                    if parsed:
+                        print(f"Successfully generated article via Gemini API ({model_name}).")
+                        return parsed
+                else:
+                    print(f"Gemini API ({model_name}) returned {res.status_code}: {res.text[:100]}")
+            except Exception as e:
+                print(f"Gemini API ({model_name}) error: {e}")
+
+    # 2. Groq API
+    groq_key = os.environ.get("GROQ_API_KEY")
+    if groq_key:
+        for model_name in ["llama-3.3-70b-versatile", "llama3-70b-8192"]:
+            try:
+                headers = {"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"}
                 payload = {
                     "model": model_name,
-                    "messages": [
-                        {"role": "system", "content": system_message},
-                        {"role": "user", "content": prompt}
-                    ],
-                    "temperature": 0.7
+                    "messages": [{"role": "system", "content": system_message}, {"role": "user", "content": prompt}],
+                    "temperature": 0.8,
+                    "max_tokens": 2048
                 }
+                res = requests.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=payload, timeout=40)
+                if res.status_code == 200:
+                    text = res.json()["choices"][0]["message"]["content"].strip()
+                    parsed = parse_json_response(text)
+                    if parsed:
+                        print(f"Successfully generated article via Groq API ({model_name}).")
+                        return parsed
+                else:
+                    print(f"Groq API ({model_name}) returned {res.status_code}: {res.text[:100]}")
             except Exception as e:
-                print(f"Groq API ({groq_model}) exception: {e}")
+                print(f"Groq API ({model_name}) error: {e}")
+
+    # 3. OpenRouter API
+    openrouter_key = os.environ.get("OPENROUTER_API_KEY")
+    if openrouter_key:
+        for model_name in ["google/gemma-3-27b-it:free", "mistralai/mistral-nemo:free"]:
+            try:
+                headers = {
+                    "Authorization": f"Bearer {openrouter_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://github.com",
+                    "X-Title": "BloggerBot"
+                }
+                payload = {
+                    "model": model_name,
+                    "messages": [{"role": "system", "content": system_message}, {"role": "user", "content": prompt}],
+                    "temperature": 0.8,
+                    "max_tokens": 2048
+                }
+                res = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload, timeout=40)
+                if res.status_code == 200:
+                    text = res.json()["choices"][0]["message"]["content"].strip()
+                    parsed = parse_json_response(text)
+                    if parsed:
+                        print(f"Successfully generated article via OpenRouter ({model_name}).")
+                        return parsed
+                else:
+                    print(f"OpenRouter ({model_name}) returned {res.status_code}: {res.text[:100]}")
+            except Exception as e:
+                print(f"OpenRouter ({model_name}) error: {e}")
+
+    # 4. GitHub Models API (PATのみ)
+    gh_token = os.environ.get("GH_TOKEN")
+    if gh_token and not gh_token.startswith("ghs_"):
+        for model_name in ["gpt-4o-mini", "gpt-4o"]:
+            try:
+                headers = {"Authorization": f"Bearer {gh_token}", "Content-Type": "application/json"}
+                payload = {
+                    "model": model_name,
+                    "messages": [{"role": "system", "content": system_message}, {"role": "user", "content": prompt}],
+                    "temperature": 0.8,
+                    "max_tokens": 2048
+                }
+                res = requests.post("https://models.inference.ai.azure.com/chat/completions", headers=headers, json=payload, timeout=40)
+                if res.status_code == 200:
+                    text = res.json()["choices"][0]["message"]["content"].strip()
+                    parsed = parse_json_response(text)
+                    if parsed:
+                        print(f"Successfully generated article via GitHub Models API ({model_name}).")
+                        return parsed
+                else:
+                    print(f"GitHub Models API ({model_name}) returned {res.status_code}: {res.text[:100]}")
+            except Exception as e:
+                print(f"GitHub Models API ({model_name}) error: {e}")
 
     print("WARNING: All online LLM generation attempts failed or rate limited. Generating high-quality tailored fallback HTML.")
-    fallback_html = f"""<div class="premium-squishy-article">
-    <div class="premium-content-body">
-        <h2>【ギフトおすすめ】{title[:35]}</h2>
-        <p>大切な方への贈り物や自分へのご褒美にぴったりな話題のアイテム「<b>{title}</b>」をご紹介します。</p>
-        <p>洗練されたデザインと上質なクオリティで、受け取った方に笑顔と感動を届ける喜ばれるギフトです。</p>
-        <ul class="premium-points-list">
-            <li><b>洗練された見た目</b>：高級感があり贈答品として最適なデザイン！</li>
-            <li><b>確かな満足感</b>：品質が高く特別感を演出してくれる逸品！</li>
-            <li><b>幅広い層に人気</b>：老若男女問わず喜ばれる選んで間違いない逸品！</li>
-        </ul>
-        {"<img src='" + image_url + "' alt='" + title + "' style='max-width: 100%; height: auto;'><br>" if image_url else ""}
-        <br><a href="https://room.rakuten.co.jp/jack555/items" target="_blank">✅ 私の楽天ROOMはこちら</a>
-    </div>
-</div>"""
+    clean_title = title.replace("【", "").replace("】", "")[:35]
+    fallback_html = (
+        f'<div class="article-wrapper">'
+        f'<div class="content-body">'
+        f'<h2>【おすすめ】{clean_title}</h2>'
+        f'<p>大人気＆注目の話題のアイテム「<b>{title}</b>」をご紹介します！</p>'
+        f'<p>デザイン性と実用性を兼ね備えた満足度の高いおすすめ商品です。</p>'
+        f'<ul class="points-list">'
+        f'<li><b>おすすめポイント1</b>：細部までこだわり抜かれた高いデザイン性とクオリティ！</li>'
+        f'<li><b>おすすめポイント2</b>：使いやすさと機能性に優れ、日常生活で大活躍！</li>'
+        f'<li><b>おすすめポイント3</b>：自分用にはもちろん、大切な方へのプレゼントにも最適！</li>'
+        f'</ul>'
+        f'{"<img src='" + image_url + "' alt='" + clean_title + "' style='max-width: 100%; height: auto;'><br>" if image_url else ""}'
+        f'{buy_button_html}'
+        f'<br><a href="https://room.rakuten.co.jp/jack555/items" target="_blank">✅ 私の楽天ROOMはこちら</a>'
+        f'</div>'
+        f'</div>'
+    )
     return {
-        "title": f"【ギフト厳選】{title[:25]}",
+        "title": f"【注目】{clean_title}",
         "html": fallback_html
     }
+
 
 def proofread_and_optimize_blogger_article(title, html_content):
     """誤字脱字最終チェックとSEO, AI-SEO, GEO的な修正ブラッシュアップ工程"""
