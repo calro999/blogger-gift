@@ -299,3 +299,4 @@ ko-fuku:10000003
 e-cha:10002295
 isekadoyabeer:10000301
 1129saisonb:10000102
+kado-select:10000195
