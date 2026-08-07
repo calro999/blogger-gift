@@ -300,3 +300,4 @@ e-cha:10002295
 isekadoyabeer:10000301
 1129saisonb:10000102
 kado-select:10000195
+isekadoyabeer:10000334
