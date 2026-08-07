@@ -307,3 +307,4 @@ kansendo-sweets:10000019
 floreal:10000800
 e-cha:10002469
 33taiyo:10000020
+terazuya:10012898
