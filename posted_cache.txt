@@ -302,3 +302,4 @@ isekadoyabeer:10000301
 kado-select:10000195
 isekadoyabeer:10000334
 balnibarbi:10000741
+tenshi-okurimono:10001239
