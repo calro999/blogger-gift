@@ -309,3 +309,4 @@ e-cha:10002469
 33taiyo:10000020
 terazuya:10012898
 rebun:10010365
+katumeshitei:10000066
