@@ -330,3 +330,4 @@ hanayoshi:10003373
 isa:10001664
 rebun:10003395
 reve-flower:10000332
+ya-man:10002464
