@@ -351,3 +351,4 @@ rokumei-coffee:10000752
 rebun:10007922
 kamasho:10001896
 stylife:14649043
+liquor-boss:10003187
