@@ -353,3 +353,4 @@ kamasho:10001896
 stylife:14649043
 liquor-boss:10003187
 morigen:10000951
+ichiishop:10006483
