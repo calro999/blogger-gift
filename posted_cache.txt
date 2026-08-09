@@ -357,3 +357,4 @@ ichiishop:10006483
 kihachi:10000307
 o-kawaya:10068837
 sawaicoffee-tea:10000479
+eitaro-souhonpo:10000449
