@@ -347,3 +347,4 @@ hanayoshi:10003358
 kurasei:10000020
 komedonya:10000225
 katumeshitei:10000058
+rokumei-coffee:10000752
