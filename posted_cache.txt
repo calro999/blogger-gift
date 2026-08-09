@@ -354,3 +354,4 @@ stylife:14649043
 liquor-boss:10003187
 morigen:10000951
 ichiishop:10006483
+kihachi:10000307
