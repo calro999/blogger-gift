@@ -359,3 +359,4 @@ o-kawaya:10068837
 sawaicoffee-tea:10000479
 eitaro-souhonpo:10000449
 yonekyu:10002024
+g4-suehiro:10000402
