@@ -361,3 +361,4 @@ eitaro-souhonpo:10000449
 yonekyu:10002024
 g4-suehiro:10000402
 jour-flour:10000138
+ryoutei-kadomatsu:10000000
