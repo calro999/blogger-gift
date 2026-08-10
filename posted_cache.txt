@@ -369,3 +369,4 @@ isekadoyabeer:10000094
 g4-suehiro:10000403
 kihachi:10000947
 kobebeef:10000380
+monkey-pants:10001075
