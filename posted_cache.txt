@@ -377,3 +377,4 @@ enaldy:10006624
 liquor-boss:10008590
 reon-fashion:10100533
 isekadoyabeer:10000433
+isekadoyabeer:10000095
