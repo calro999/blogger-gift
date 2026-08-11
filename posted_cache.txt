@@ -390,3 +390,4 @@ katumeshitei:10000071
 lobelia:10000007
 aino-kajitu:10000632
 bunbunbee:10000230
+isekadoyabeer:10000431
