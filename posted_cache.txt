@@ -410,3 +410,4 @@ maruyasuisan:10000083
 ohanakakumei:10000893
 isekadoyabeer:10000021
 yonekyu:10002741
+auc-season:10019883
