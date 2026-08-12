@@ -406,3 +406,4 @@ mtgec-beauty:10002009
 reon-fashion:10100534
 komedonya:10000389
 hayaru:10000396
+maruyasuisan:10000083
