@@ -428,3 +428,4 @@ rambbit:10196259
 marry-gift:10057601
 cosmediva:10002309
 bellevie-harima:10013190
+takiemon:10000246
