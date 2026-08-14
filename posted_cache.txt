@@ -434,3 +434,4 @@ babychips:10002245
 riceking:10001941
 friend-art-next:10000158
 enaldy:10042842
+serendip-takasaki:10000002
