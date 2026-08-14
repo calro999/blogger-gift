@@ -436,3 +436,4 @@ friend-art-next:10000158
 enaldy:10042842
 serendip-takasaki:10000002
 okkru:10000048
+yudachigama:10012737
