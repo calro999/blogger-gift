@@ -447,3 +447,4 @@ bunbunbee:10002788
 eehana:10001244
 toukaikotobuki-ogura:10000000
 housouhiroba:10001962
+auc-livingfine:10002452
