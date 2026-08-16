@@ -458,3 +458,4 @@ tsubakiya:10000459
 motebeauty:10050091
 meat-maichiku:10000515
 gyushohonten:10000531
+yamanashi-kajitsu:10000004
