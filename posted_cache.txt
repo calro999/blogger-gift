@@ -457,3 +457,4 @@ vanilla:10001478
 tsubakiya:10000459
 motebeauty:10050091
 meat-maichiku:10000515
+gyushohonten:10000531
