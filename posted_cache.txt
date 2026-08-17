@@ -465,3 +465,4 @@ housouhiroba:10000758
 biyouitem-hps:10064609
 housouhiroba:10001963
 housouhiroba:10000976
+kansendo-sweets:10000018
