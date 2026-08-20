@@ -486,3 +486,4 @@ housouhiroba:10001925
 bishodo:10000559
 isekadoyabeer:10000387
 ftk-tsutayaelectrics:10005744
+1894ginza-sembikiya:10000240
