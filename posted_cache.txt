@@ -489,3 +489,4 @@ ftk-tsutayaelectrics:10005744
 1894ginza-sembikiya:10000240
 gihee:10001804
 art-and-craft-lab:10006813
+housouhiroba:10001216
