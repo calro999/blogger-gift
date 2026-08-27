@@ -525,3 +525,4 @@ hanakikyo:10000007
 ichijyo:10000021
 flowerkitchen:10000424
 maruheart:10000229
+hanawara:10000005
