@@ -74,37 +74,45 @@ def fetch_rakuten_item():
     if not app_id or not access_key:
         raise ValueError("RAKUTEN_APP_ID and RAKUTEN_ACCESS_KEY must be set in environment variables.")
 
-    attributes = ["プレゼント", "ギフト", "誕生日", "お祝い", "限定", "高級"]
-    selected_attribute = random.choice(attributes)
-    keyword = f"ギフト {selected_attribute}"
-    print(f"Searching Rakuten for keyword: {keyword}")
-
-    url = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260401"
-    params = {
-        "applicationId": app_id,
-        "accessKey": access_key,
-        "keyword": keyword,
-        "format": "json",
-        "hits": 30
-    }
-    if affiliate_id:
-        params["affiliateId"] = affiliate_id
-
-    response = requests.get(url, params=params)
-    if response.status_code != 200:
-        raise RuntimeError(f"Failed to fetch from Rakuten API: {response.status_code} - {response.text}")
-
-    data = response.json()
-    items = data.get("Items", [])
-    if not items:
-        raise RuntimeError(f"No items found for keyword: {keyword}")
+    attributes = [
+        "プレゼント", "ギフト", "誕生日", "お祝い", "限定", "高級", "人気 ランキング",
+        "スイーツ ギフト", "おしゃれ 雑貨", "リラックス グッズ", "内祝い", "お返し",
+        "記念日", "カタログギフト", "コスメ ギフト", "グルメ ギフト", "入浴剤 ギフト"
+    ]
+    random.shuffle(attributes)
 
     posted_cache = load_posted_cache()
-    for item_wrapper in items:
-        item = item_wrapper.get("Item", {})
-        item_code = item.get("itemCode")
-        if item_code and item_code not in posted_cache:
-            return item
+
+    for attr in attributes:
+        keyword = f"ギフト {attr}" if not attr.startswith("ギフト") else attr
+        pages = [1, 2, 3]
+        random.shuffle(pages)
+        for page in pages:
+            print(f"Searching Rakuten for keyword: {keyword} (page {page})")
+            url = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260401"
+            params = {
+                "applicationId": app_id,
+                "accessKey": access_key,
+                "keyword": keyword,
+                "format": "json",
+                "page": page,
+                "hits": 30
+            }
+            if affiliate_id:
+                params["affiliateId"] = affiliate_id
+
+            try:
+                response = requests.get(url, params=params, timeout=15)
+                if response.status_code == 200:
+                    data = response.json()
+                    items = data.get("Items", [])
+                    for item_wrapper in items:
+                        item = item_wrapper.get("Item", {})
+                        item_code = item.get("itemCode")
+                        if item_code and item_code not in posted_cache:
+                            return item
+            except Exception as e:
+                print(f"Error fetching keyword '{keyword}' page {page}: {e}")
 
     raise RuntimeError("All fetched items have already been posted.")
 
