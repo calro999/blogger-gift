@@ -559,3 +559,4 @@ leapgrow:10000352
 marry-gift:10055927
 e-cha:10003351
 f092061-nikko:10000287
+funabashi-ya:10000024
