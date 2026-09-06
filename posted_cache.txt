@@ -569,3 +569,4 @@ kochouan:10000354
 freedom-m:10011710
 okaimono-snoopy:10033609
 e-cha:10004296
+f122041-funabashi:10000006
