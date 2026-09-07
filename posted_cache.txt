@@ -579,3 +579,4 @@ suisosum-shop:10000233
 itohkyuemon:10005850
 rambbit:10013538
 itohkyuemon:10005849
+yuyanotemiyage:10000001
