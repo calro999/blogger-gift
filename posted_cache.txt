@@ -604,3 +604,4 @@ bellevie-harima:10013197
 e-cha:10003352
 f105236-chiyoda:10000163
 oiwaiya:10001363
+tsurutontan-store:10000000
