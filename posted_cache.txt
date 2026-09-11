@@ -606,3 +606,4 @@ f105236-chiyoda:10000163
 oiwaiya:10001363
 tsurutontan-store:10000000
 salua-eyemaskstore:10000016
+kobebeef:10000116
