@@ -613,3 +613,4 @@ yamagoiida:10000030
 kouden-okokorozashi:10014951
 jsy-ma:10000287
 tonohata:10000120
+lepiqueassiette:10000002
