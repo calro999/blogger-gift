@@ -609,3 +609,4 @@ salua-eyemaskstore:10000016
 kobebeef:10000116
 oyaizu:10000246
 excitech:10000344
+yamagoiida:10000030
