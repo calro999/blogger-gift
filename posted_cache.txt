@@ -611,3 +611,4 @@ oyaizu:10000246
 excitech:10000344
 yamagoiida:10000030
 kouden-okokorozashi:10014951
+jsy-ma:10000287
