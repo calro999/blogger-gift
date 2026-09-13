@@ -617,3 +617,4 @@ lepiqueassiette:10000002
 nattokushop:10003237
 moonheart:10000239
 oyasumi:10033772
+sawaicoffee-tea:10005036
