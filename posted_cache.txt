@@ -627,3 +627,4 @@ saisyokukenbi:10000773
 tonohata:10000011
 bellevie-harima:10117031
 kouden-okokorozashi:10000154
+chapon:10000000
