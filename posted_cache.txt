@@ -629,3 +629,4 @@ bellevie-harima:10117031
 kouden-okokorozashi:10000154
 chapon:10000000
 bellevie-harima:10013195
+kawatabaraen:10000004
