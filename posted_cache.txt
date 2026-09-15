@@ -630,3 +630,4 @@ kouden-okokorozashi:10000154
 chapon:10000000
 bellevie-harima:10013195
 kawatabaraen:10000004
+cleo-shop:10002140
