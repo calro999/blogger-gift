@@ -643,3 +643,4 @@ jour-flour:10000663
 muraikashiho:10001712
 f262129-kyotango:10000533
 bellevie-harima:10013196
+ringbellshop:10002122
