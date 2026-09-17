@@ -644,3 +644,4 @@ muraikashiho:10001712
 f262129-kyotango:10000533
 bellevie-harima:10013196
 ringbellshop:10002122
+maka-shop:10000120
