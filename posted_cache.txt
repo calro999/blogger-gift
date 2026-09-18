@@ -646,3 +646,4 @@ bellevie-harima:10013196
 ringbellshop:10002122
 maka-shop:10000120
 futon:10047920
+salonhana:10000150
