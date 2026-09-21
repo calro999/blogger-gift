@@ -669,3 +669,4 @@ cavatina:10035233
 maruhiro-dep:10037806
 mayunashop:10000710
 auc-extremelimit:10001195
+ringbellshop:10000329
