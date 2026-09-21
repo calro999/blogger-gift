@@ -670,3 +670,4 @@ maruhiro-dep:10037806
 mayunashop:10000710
 auc-extremelimit:10001195
 ringbellshop:10000329
+spalabo:10000204
