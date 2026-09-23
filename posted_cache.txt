@@ -682,3 +682,4 @@ marry-gift:10077540
 giftland-showa:10000202
 etizentakaraya:10000445
 henri-charpentier:10002022
+sukora0535:10000000
