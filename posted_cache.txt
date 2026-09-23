@@ -680,3 +680,4 @@ plywood:10011822
 ito-noen:10000740
 marry-gift:10077540
 giftland-showa:10000202
+etizentakaraya:10000445
