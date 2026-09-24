@@ -685,3 +685,4 @@ henri-charpentier:10002022
 sukora0535:10000000
 blois:10061695
 rl-waffle-cake:10001351
+nagasaki-kasutera:10001973
