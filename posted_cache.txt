@@ -694,3 +694,4 @@ happy-talk-shop:10000086
 aquila-sweets:10000013
 sakura-story:10000537
 bellevie-harima:10000178
+w-import:10015547
