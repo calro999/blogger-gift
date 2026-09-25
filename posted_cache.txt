@@ -691,3 +691,4 @@ bellevie-harima:10013200
 honeyandmum:10000514
 shippotoseikatsu:10000014
 happy-talk-shop:10000086
+aquila-sweets:10000013
