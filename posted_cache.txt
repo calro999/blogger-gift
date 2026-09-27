@@ -707,3 +707,4 @@ yonekyu:10000040
 fsapo:10016948
 rush-mall:10018056
 blois:10061692
+cosmediva:10004004
