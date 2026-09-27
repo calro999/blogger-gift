@@ -703,3 +703,4 @@ sleepdays:10000076
 mizunotodashi:10000198
 rebun:10010602
 ringbellshop:10000359
+yonekyu:10000040
