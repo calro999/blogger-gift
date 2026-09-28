@@ -710,3 +710,4 @@ blois:10061692
 cosmediva:10004004
 bonnemarche:10000077
 s-arrange:10001107
+ange-selectshop1:10000113
