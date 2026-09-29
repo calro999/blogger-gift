@@ -716,3 +716,4 @@ sawasei:10223430
 i-pre:10052850
 kado-select:10000107
 yakiniku-yamato:10001183
+bishodo:10001162
