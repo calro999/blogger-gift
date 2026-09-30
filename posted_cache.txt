@@ -718,3 +718,4 @@ kado-select:10000107
 yakiniku-yamato:10001183
 bishodo:10001162
 bellevie-harima:10038972
+hakuichi:10000630
