@@ -722,3 +722,4 @@ hakuichi:10000630
 enicy:10000000
 happy-talk-shop:10000078
 bellevie-harima:10117032
+kouden-okokorozashi:10000159
