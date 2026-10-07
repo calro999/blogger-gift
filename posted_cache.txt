@@ -750,3 +750,4 @@ sowxp:10000153
 ringbellshop:10002247
 shuei-hana:10000798
 basilurtea:10000003
+ringbellshop:10000040
