@@ -755,3 +755,4 @@ sc-rkt:10006339
 yokumoku:10000417
 ringbellshop:10001645
 henri-charpentier:10001032
+omutsufactory:10005176
