@@ -768,3 +768,4 @@ oimoya:10002990
 hanariro:10021857
 meat-tamaya:10000591
 housouhiroba:10001926
+kouden-okokorozashi:10000153
