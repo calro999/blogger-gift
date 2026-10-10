@@ -771,3 +771,4 @@ housouhiroba:10001926
 kouden-okokorozashi:10000153
 giftland-showa:10000196
 spalabo:10000435
+patie:10000946
