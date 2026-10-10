@@ -774,3 +774,4 @@ spalabo:10000435
 patie:10000946
 bellevie-harima:10167985
 quattro-botanico:10000140
+chanova:10000636
