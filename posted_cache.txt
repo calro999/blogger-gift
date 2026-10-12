@@ -789,3 +789,4 @@ hankoya-shop:10024424
 ikorofood:10001201
 import-ss-shop:10034074
 marry-gift:10092785
+patie:10111009
