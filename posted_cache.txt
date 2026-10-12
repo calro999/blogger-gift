@@ -787,3 +787,4 @@ tokyo-mont-blanc:10000002
 masuyone:10001047
 hankoya-shop:10024424
 ikorofood:10001201
+import-ss-shop:10034074
