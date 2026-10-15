@@ -813,3 +813,4 @@ shiseidomen:10000021
 yokumoku:10000435
 enjin-kannabe:10000004
 cosmediva:10003391
+yuyanotemiyage:10000411
