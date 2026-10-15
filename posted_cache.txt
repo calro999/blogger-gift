@@ -809,3 +809,4 @@ excitech:10000272
 iroha-do:10001210
 fm-floral:10004146
 shoppress:10001008
+shiseidomen:10000021
