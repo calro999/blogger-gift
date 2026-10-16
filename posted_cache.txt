@@ -819,3 +819,4 @@ liviewstore:10003734
 bellevie-harima:10148704
 lindt-chocolate:10002037
 kouden-okokorozashi:10013905
+kouden-okokorozashi:10013950
