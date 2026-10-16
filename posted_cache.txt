@@ -821,3 +821,4 @@ lindt-chocolate:10002037
 kouden-okokorozashi:10013905
 kouden-okokorozashi:10013950
 merci-p:10001118
+kouragumi:10000367
