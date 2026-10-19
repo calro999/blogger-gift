@@ -838,3 +838,4 @@ sucreyshop:10000030
 isekadoyabeer:10000024
 shiseidomen:10000026
 japangift:10435323
+housouhiroba:10002403
