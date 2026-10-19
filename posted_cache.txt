@@ -835,3 +835,4 @@ futontanaka:10025063
 bellevie-harima:10135542
 dogtag:10000856
 sucreyshop:10000030
+isekadoyabeer:10000024
