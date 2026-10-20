@@ -847,3 +847,4 @@ ichiishop:10006482
 leapgrow:10000326
 kagunosato:10018127
 happy-talk-shop:10000059
+aiambeauty:10000020
