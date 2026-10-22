@@ -862,3 +862,4 @@ auc-concent:10000134
 housouhiroba:10002336
 bundara:10001675
 gallershop:10000204
+kansendo-sweets:10000036
