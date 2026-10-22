@@ -857,3 +857,4 @@ s-arrange:10001160
 expsjapan:10030069
 kouden-okokorozashi:10000063
 t-pro:10000053
+kawamotoya:10001308
