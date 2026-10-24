@@ -875,3 +875,4 @@ auc-concent:10018486
 washoku:10000317
 kouden-okokorozashi:10000158
 i-pre:10013176
+yslbeauty:10000307
