@@ -882,3 +882,4 @@ daigounagi:10000332
 antina:10005934
 mtgec-beauty:10002261
 bellevie-harima:10135563
+zeldis-japan:10000125
