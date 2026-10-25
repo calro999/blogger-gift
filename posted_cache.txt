@@ -880,3 +880,4 @@ ufu-coffee:10000097
 hon-waka:10001039
 daigounagi:10000332
 antina:10005934
+mtgec-beauty:10002261
