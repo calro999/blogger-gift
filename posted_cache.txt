@@ -902,3 +902,4 @@ housouhiroba:10001932
 iberico-ya:10000331
 isekadoyabeer:10000412
 bellevie-harima:10158755
+bugyo:10004467
