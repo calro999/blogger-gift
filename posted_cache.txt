@@ -905,3 +905,4 @@ bellevie-harima:10158755
 bugyo:10004467
 harmonick:10000080
 housouhiroba:10002033
+kiraku-senzaki:10000217
