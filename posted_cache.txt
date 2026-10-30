@@ -917,3 +917,4 @@ kouden-okokorozashi:10000156
 wakasugi:10000051
 kobebeef:10000005
 lindt-chocolate:10000528
+shoppress:10001529
