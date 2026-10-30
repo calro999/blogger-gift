@@ -919,3 +919,4 @@ kobebeef:10000005
 lindt-chocolate:10000528
 shoppress:10001529
 gihee:10000110
+valueprice:10000101
