@@ -929,3 +929,4 @@ bishodo:10000491
 blessyou:10046530
 kouden-okokorozashi:10000013
 i-preshop2:10003668
+kyunan:10020803
