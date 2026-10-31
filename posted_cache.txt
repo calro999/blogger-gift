@@ -927,3 +927,4 @@ foodentic:10000065
 katumeshitei:10000082
 bishodo:10000491
 blessyou:10046530
+kouden-okokorozashi:10000013
