@@ -953,3 +953,4 @@ terazuya:10021029
 from-zao:10000308
 sc-rkt:10007129
 gudeza:10002231
+shocora:10020400
