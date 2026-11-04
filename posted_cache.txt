@@ -955,3 +955,4 @@ sc-rkt:10007129
 gudeza:10002231
 shocora:10020400
 oimoya:10002608
+import-ss-shop:10034066
