@@ -966,3 +966,4 @@ kouden-okokorozashi:10013901
 chouchou-favori:10000428
 oiwaiya:10001405
 kemuriya:10000131
+giftland-showa:10000292
