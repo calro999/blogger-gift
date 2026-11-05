@@ -968,3 +968,4 @@ oiwaiya:10001405
 kemuriya:10000131
 giftland-showa:10000292
 bellevie-harima:10175609
+lovechrome:10000050
