@@ -975,3 +975,4 @@ auc-concent:10011075
 matsuyoshi:10000012
 japangift:10478328
 bellevie-harima:10150344
+kawasui:10000113
