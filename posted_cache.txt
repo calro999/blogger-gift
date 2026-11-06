@@ -970,3 +970,4 @@ giftland-showa:10000292
 bellevie-harima:10175609
 lovechrome:10000050
 shinbun20:10000033
+otoriyosestadium:10001410
