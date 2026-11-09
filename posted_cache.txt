@@ -550,3 +550,4 @@ baby-arte:10000647
 bellevie-harima:10013197
 import-ss-shop:10034084
 pansyflowers:10003917
+kado-select:10000107
