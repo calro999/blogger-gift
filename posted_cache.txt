@@ -544,3 +544,4 @@ maruheart:10102048
 gift-paradise:10000014
 okashi:10000317
 bruno-official:10001418
+mpowjapan:10000706
