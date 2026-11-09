@@ -548,3 +548,4 @@ mpowjapan:10000706
 e-cha:10003351
 baby-arte:10000647
 bellevie-harima:10013197
+import-ss-shop:10034084
