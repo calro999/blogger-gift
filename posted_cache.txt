@@ -557,3 +557,4 @@ jour-flour:10000119
 art-kirameki:10000380
 hankoya-shop:10024424
 omutsufactory:10006734
+kouden-okokorozashi:10013936
