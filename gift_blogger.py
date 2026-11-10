@@ -1205,7 +1205,6 @@ def generate_room_comment_with_llm(item):
     return f"{starter}\n\n{body}\n{price_info}\n\n#ギフト #プレゼント #お祝い #楽天市場 #コレ"
 
 
-
 def post_to_rakuten_room(item_code, comment):
     session_b64 = os.environ.get("ROOM_SESSION_B64") or os.environ.get("BLOGGER_SESSION_B64")
     
