@@ -572,3 +572,4 @@ cavatina:10019848
 marz-shop:10026166
 rokumei-coffee:10000016
 can-naturel:10000047
+jyosui:10000139
