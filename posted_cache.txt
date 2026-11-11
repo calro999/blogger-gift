@@ -571,3 +571,4 @@ bellevie-harima:10089594
 cavatina:10019848
 marz-shop:10026166
 rokumei-coffee:10000016
+can-naturel:10000047
