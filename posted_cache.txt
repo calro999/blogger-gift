@@ -585,3 +585,4 @@ sajikame:10003994
 gion-kitagawahanbee:10000272
 henri-charpentier:10001037
 ddiissmm:10048827
+tu-retail:10001231
