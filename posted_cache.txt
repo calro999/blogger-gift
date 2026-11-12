@@ -578,3 +578,4 @@ jsy-ma:10000472
 foodentic:10000065
 morevalue:10000279
 bundara:10001675
+craftcafe:10011986
