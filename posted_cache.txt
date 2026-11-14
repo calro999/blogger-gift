@@ -600,3 +600,4 @@ can-naturel:10000046
 nm-element:10000034
 miyoshi-ya:10153392
 piary:10179229
+friend-gift:10012519
