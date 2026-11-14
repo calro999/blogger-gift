@@ -598,3 +598,4 @@ oliveisland:10000612
 f403458-shingu:10000756
 can-naturel:10000046
 nm-element:10000034
+miyoshi-ya:10153392
