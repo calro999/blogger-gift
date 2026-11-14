@@ -603,3 +603,4 @@ piary:10179229
 friend-gift:10012519
 shinfulife:10006212
 loccitane:10000757
+kawasui:10000165
