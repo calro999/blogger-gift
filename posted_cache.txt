@@ -622,3 +622,4 @@ asktrading:10061552
 dining-shioso:10000373
 f192023-fujiyoshida:10000414
 richcandle:10004681
+lamutee:10000050
