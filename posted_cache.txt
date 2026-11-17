@@ -640,3 +640,4 @@ kos-plus:10000097
 msbm-musubime:10000548
 geki-pla:10067660
 cherrybell:10022509
+yabucoffee:10000026
