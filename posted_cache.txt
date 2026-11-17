@@ -633,3 +633,4 @@ beisia:10127000
 wingleshop:10000123
 bellevie-harima:10028386
 pajamaya:10001328
+chirancha:10000406
