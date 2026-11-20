@@ -668,3 +668,4 @@ kinoco:10293039
 auc-e-ecolife:10022893
 f304280-kushimoto:10000088
 rimina:10000004
+yamayuu:10018163
