@@ -670,3 +670,4 @@ f304280-kushimoto:10000088
 rimina:10000004
 yamayuu:10018163
 salua-eyemaskstore:10000017
+kihachi:10000008
