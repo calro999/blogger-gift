@@ -684,3 +684,4 @@ friend-gift:10030820
 shihoya:10001788
 akashie:10001227
 crystal-planet:10065140
+kawasui:10000913
