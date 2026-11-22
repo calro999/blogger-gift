@@ -686,3 +686,4 @@ akashie:10001227
 crystal-planet:10065140
 kawasui:10000913
 rikyu-en:10000238
+motto-motto:10077806
