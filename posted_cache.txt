@@ -689,3 +689,4 @@ rikyu-en:10000238
 motto-motto:10077806
 golwis:10002063
 mayunashop:10000675
+nissansoap:10001532
