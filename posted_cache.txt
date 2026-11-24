@@ -704,3 +704,4 @@ hyakunote:10009750
 sawaicoffee-tea:10002844
 cherrybell-k:10028403
 kouragumi:10000838
+fashion-fast:10003701
