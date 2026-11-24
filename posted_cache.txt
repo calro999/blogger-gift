@@ -705,3 +705,4 @@ sawaicoffee-tea:10002844
 cherrybell-k:10028403
 kouragumi:10000838
 fashion-fast:10003701
+takiemon:10000033
