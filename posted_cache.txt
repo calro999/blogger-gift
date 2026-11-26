@@ -721,3 +721,4 @@ kyotoujichanoki:10000024
 tazimi:10001393
 vinaskatrading:10000063
 yochika:10008428
+aromage-store2:10008345
