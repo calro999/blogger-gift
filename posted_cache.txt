@@ -725,3 +725,4 @@ aromage-store2:10008345
 gift-care:10001273
 friend-gift:10045497
 f362051-yoshinogawa:10000025
+friend-gift:10001360
