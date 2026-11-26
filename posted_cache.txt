@@ -728,3 +728,4 @@ f362051-yoshinogawa:10000025
 friend-gift:10001360
 gotochi:10005728
 puanela:10000007
+khcollection:10000895
