@@ -723,3 +723,4 @@ vinaskatrading:10000063
 yochika:10008428
 aromage-store2:10008345
 gift-care:10001273
+friend-gift:10045497
