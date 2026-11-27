@@ -665,7 +665,7 @@ Google検索・読者双方から最高品質の一次情報レビューとし�
         f'</div>'
     )
     return {
-        "title": f"【注目】{clean_title}",
+        "title": f"{clean_title}の魅力と使い心地を徹底レビュー",
         "html": fallback_html
     }
 
